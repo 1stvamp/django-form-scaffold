@@ -1,5 +1,4 @@
-from django.utils.encoding import StrAndUnicode, smart_unicode, force_unicode
-from django.utils.safestring import mark_safe
+from django.utils.encoding import force_unicode
 from django.forms.forms import BoundField
 
 
