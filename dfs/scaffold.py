@@ -137,4 +137,4 @@ def html_output(form, normal_row, error_row, row_ender, help_text_html, errors_o
             # If there aren't any rows in the output, just append the
             # hidden fields.
             output.append(str_hidden)
-    return mark_safe(u'\n'.join(output))
+    return u'\n'.join(output)
