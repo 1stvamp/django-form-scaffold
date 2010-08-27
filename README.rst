@@ -1,4 +1,4 @@
-``django-form-scaffold`` is a package of utility functions for generating Django template code with markup from Django form instances.
+``django-form-scaffold`` is a package of helper functions for generating Django template code with markup from Django form instances.
 
 It solves the problem of generating, over and over again, markup for a full form which is effectively a templated version of the
 ``BaseForm`` ``as_p``, ``as_ul`` and ``as_table`` methods output (which output static values, rather than dyanmic Django template code).
