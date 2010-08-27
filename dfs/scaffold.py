@@ -9,6 +9,8 @@ def as_p(instance=None, cls=None):
     elif instance and cls:
         return TypeError('as_p takes at most 1 argument (2 given)')
     elif cls:
+        # This might not always work, if your form requires params,
+        # pass an instance instead of a class!
         instance = cls()
 
     return html_output(
@@ -19,6 +21,25 @@ def as_p(instance=None, cls=None):
         help_text_html = u' %s',
         errors_on_separate_row = True)
 
+def as_div(instance=None, cls=None):
+    "Returns this form rendered as HTML <div>s."
+    if not instance and not cls:
+        return TypeError('as_div takes at least 1 argument (0 given)')
+    elif instance and cls:
+        return TypeError('as_div takes at most 1 argument (2 given)')
+    elif cls:
+        # This might not always work, if your form requires params,
+        # pass an instance instead of a class!
+        instance = cls()
+
+    return html_output(
+        instance,
+        normal_row = u'<div%(html_class_attr)s>%(label)s %(field)s%(help_text)s</div>',
+        error_row = u'%s',
+        row_ender = '</div>',
+        help_text_html = u' %s',
+        errors_on_separate_row = True)
+
 def as_table(instance=None, cls=None):
     "Returns this form rendered as HTML <tr>s -- excluding the <table></table>."
     if not instance and not cls:
@@ -26,6 +47,8 @@ def as_table(instance=None, cls=None):
     elif instance and cls:
         return TypeError('as_table takes at most 1 argument (2 given)')
     elif cls:
+        # This might not always work, if your form requires params,
+        # pass an instance instead of a class!
         instance = cls()
 
     return html_output(
@@ -43,6 +66,8 @@ def as_ul(instance=None, cls=None):
     elif instance and cls:
         return TypeError('as_ul takes at most 1 argument (2 given)')
     elif cls:
+        # This might not always work, if your form requires params,
+        # pass an instance instead of a class!
         instance = cls()
 
     return html_output(
