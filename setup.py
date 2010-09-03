@@ -9,7 +9,7 @@ except ImportError:
 setup(
         name='django-form-scaffold',
         description='Helper functions for generating templated markup of Django forms',
-        version='1.0',
+        version='1.0.1',
         author='Wes Mason',
         author_email='wes[at]1stvamp[dot]org',
         url='http://github.com/1stvamp/django-form-scaffold',
