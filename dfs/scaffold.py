@@ -106,7 +106,7 @@ def html_output(form, normal_row, error_row, row_ender, help_text_html, errors_o
                 'errors': \
                   '{%% if form.%s.errors %%}{%% for error in form.%s.errors %%}{{ error }}{%% endfor %%}{%% endif %%}' \
                   % (name, name,),
-                'label': '{{ form.%s.label }}' % (name,),
+                'label': '{{ form.%s.label_tag }}' % (name,),
                 'field': '{{ form.%s }}' % (name,),
                 'help_text': '',
                 'html_class_attr': html_class_attr
