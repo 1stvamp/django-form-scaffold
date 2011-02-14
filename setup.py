@@ -13,7 +13,8 @@ setup(
         author='Wes Mason',
         author_email='wes[at]1stvamp[dot]org',
         url='http://github.com/1stvamp/django-form-scaffold',
-        packages=find_packages(exclude=['ez_setup']),
+        packages=find_packages('src', exclude=['ez_setup']),
+        package_dir={'': 'src'},
         setup_requires=(
                 'django>=1.1',
         ),
