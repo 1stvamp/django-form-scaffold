@@ -86,6 +86,6 @@ The following helper functions available in ``dfs.scaffold``:
 *as_table*
   Outputs the same markup <table> style as the inbuilt Django ``BaseForm.as_table``.
 
-*as_table*
+*as_div*
   Extra scaffold-only helper to output an alternative <div> based form layout, similar in layout to ``as_p`` but with <div>s.
 
