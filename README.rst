@@ -89,3 +89,13 @@ The following helper functions available in ``dfs.scaffold``:
 *as_div*
   Extra scaffold-only helper to output an alternative <div> based form layout, similar in layout to ``as_p`` but with <div>s.
 
+Management command
+==================
+
+As of v1.1.0 *django-form-scaffold* ships with the management command ``formscaffold``, which acts as a simple wrapper around the scaffold functions.
+
+To use the command just add ``dfs`` to your ``INSTALLED_APPS`` setting and use via ``python manage.py`` (or ``bin/django`` if you're using buildout) like so::
+
+  $ python manage.py formscaffold myapp.forms MyForm as_p
+
+This just use the class-based generation functionality of scaffold functions (pass in a class and they init a blank instance), if you need any customisations performing to the form instance before hand, use from within a Django-ized Python shell as above (e.g. with ``manage.py shell``).
