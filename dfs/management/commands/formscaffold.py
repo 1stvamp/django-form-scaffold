@@ -1,4 +1,3 @@
-#template_scaffold.py
 """
 Wrapper to call scaffold from the commandline to dynamically generate::
   from dfs import scaffold
@@ -8,22 +7,24 @@ Wrapper to call scaffold from the commandline to dynamically generate::
 """
 
 from dfs import scaffold
-from optparse import make_option
 from django.core.management.base import BaseCommand, CommandError
 
+def do_import(name):
+    mod = __import__(name)
+    components = name.split('.')
+    for comp in components[1:]:
+        mod = getattr(mod, comp)
+    return mod
+
 class Command(BaseCommand):
-    args = '<form_source> <form_name> <output_type>'
-    help = """Wrapper to call form scaffolding from the commandline and output
-static markup for a Django form, e.g.:
-python manage.py form_scaffold my_app.forms MyCustomForm as_ul
-"""
+    help = "Wrapper to call form scaffolding from the commandline, e.g.\nformscaffold my_app.forms MyForm as_p"
+    args = "<form module> <form class name> <output type>"
 
     def handle(self, *args, **options):
-        form_sources = args[0]
+        module_path = args[0]
         form_name = args[1]
         output_type = args[2]
 
         scaffolder = getattr(scaffold, output_type)
-        form = __import__(form_name)
-        print scaffolder(form)
-
+        form = getattr(do_import(module_path), form_name)
+        self.stdout.write(scaffolder(cls=form))

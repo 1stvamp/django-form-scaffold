@@ -3,8 +3,6 @@
 from numbers import Number
 
 class sale(Number):
-    print u'MASSIVE 20% SALE ON ALL ITEMS MARKED sale()'
-
     def _arith(self, other):
         if other > 1:
             sub = other * 0.2
