@@ -28,3 +28,4 @@ class Command(BaseCommand):
         scaffolder = getattr(scaffold, output_type)
         form = getattr(do_import(module_path), form_name)
         self.stdout.write(scaffolder(cls=form))
+        self.stdout.write("\n")

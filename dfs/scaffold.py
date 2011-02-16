@@ -1,5 +1,6 @@
 from django.utils.encoding import force_unicode
 from django.forms.forms import BoundField
+from django.utils.html import conditional_escape
 
 
 def as_p(instance=None, cls=None):
@@ -86,6 +87,7 @@ def html_output(form, normal_row, error_row, row_ender, help_text_html, errors_o
     for name, field in form.fields.items():
         html_class_attr = ''
         bf = BoundField(form, field, name)
+        bf_errors = form.error_class([conditional_escape(error) for error in bf.errors]) # Escape and cache in local variable.
         if bf.is_hidden:
             if bf_errors:
                 top_errors.extend([u'(Hidden field %s) %s' % (name, force_unicode(e)) for e in bf_errors])
